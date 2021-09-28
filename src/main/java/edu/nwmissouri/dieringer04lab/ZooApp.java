@@ -23,7 +23,9 @@ public class ZooApp {
         String[] aardvarkNames = {"Ann", "Abe", "Axelotyl, first of his Name"};
         String[] griffinNames = {"Griff", "George",
             "Gus, Lord of the Skies and Defender of the White Mountain"};
-        
+        String[] ibisNames = {"Ivan of the Fancy Plummage", "Ignatio the Angry One",
+            "Igor the One Legged Wader"};
+
         // Prompt welcome message
         int nameLength = "Alexander".length();
         for (int i = 0; i < nameLength; i++) {
@@ -65,15 +67,23 @@ public class ZooApp {
                     break;
             }
 
+            // Do our loop to let the user view the animals
             while (checkAnimals) {
-                System.out.println("What type of animal would you like to see (enter number): ");
+                System.out.println("What type of animal would you like to see (enter number or Q to exit): ");
                 System.out.println("\t1. Aardvarks");
                 System.out.println("\t2. Griffins");
+                System.out.println("\t3. Ibis");
                 userInput = scan.nextLine();
 
+                /**
+                 * Enter 1 for aardvarks, 2 for griffins, or 3 for ibis
+                 * Creates three of any animal selected and displays info
+                 * If Q is entered, exit the program
+                 * Unrecognized input returns to view animal prompt
+                 */
                 switch (userInput.toLowerCase()) {
                     case "1":
-                        for(int j=0; j < 3; j++) {
+                        for (int j = 0; j < 3; j++) {
                             Aardvark aard = new Aardvark(aardvarkNames[j]);
                             aard.callAllMethods();
                             System.out.print("\n");
@@ -81,13 +91,20 @@ public class ZooApp {
                         break;
 
                     case "2":
-                        for(int k=0; k < 3; k++) {
+                        for (int k = 0; k < 3; k++) {
                             Griffin grif = new Griffin(griffinNames[k]);
                             grif.callAllMethods();
                             System.out.print("\n");
                         }
                         break;
 
+                    case "3":
+                        for (int x = 0; x < 3; x++) {
+                            Ibis iggy = new Ibis(ibisNames[x]);
+                            iggy.callAllMethods();
+                            System.out.print("\n");
+                        }
+                        break;
                     case "q":
                         System.out.println(exitStatement);
                         checkAnimals = false;
